@@ -2,10 +2,24 @@
 
 {% block content %}
 
+<script>
+  $(document).ready(function()
+  {
+    var incomeAmount;
+    var totalIncome = 0;
+    $('td:nth-child(5)').each(function()
+    {
+      incomeAmount=$(this).html();
+      totalIncome+=parseInt(incomeAmount);
+      $('#totalIncome').text(totalIncome);
+    });
+  });
+</script>
+
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-regular fa-house"></i>Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><i class="fa-thin fa-sack-dollar"></i>Income</li>
+      <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-sack-dollar"></i>Income</li>
     </ol>
 </nav>
 
@@ -19,27 +33,31 @@
         <table class="table table-stripped table-hover">
           <thead>
             <tr>
-              <th>Amount (CURRENCY)</th>
+              <th>Operations</th>
               <th>Category</th>
               <th>Description</th>
               <th>Date</th>
-              <th></th>
+              <th>Amount (CURRENCY)</th>
             </tr>
           </thead>
 
           <tbody>
             {% for income in incomes %}
             <tr>
-              <td>{{income.amount}}</td>
-              <td>{{income.category}}</td>
-              <td>{{income.description}}</td>
-              <td>{{income.date}}</td>
               <td>
                 <a href="{% url 'edit_income' income.id %}" class="btn btn-warning btn-sm">Edit</a>
                 <a href="{% url 'delete_income' income.id %}" class="btn btn-danger btn-sm">Delete</a>
               </td>
+              <td>{{income.category}}</td>
+              <td>{{income.description}}</td>
+              <td>{{income.date}}</td>
+              <td>{{income.amount}}</td>
             </tr>
             {% endfor %}
+            <tr>
+              <td colspan="4"><b>Total Income: </b></td>
+              <td id="totalIncome" style="font-weight: bold;"></td>
+            </tr>
           </tbody>
         </table>
       {% else %}

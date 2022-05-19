@@ -2,10 +2,24 @@
 
 {% block content %}
 
+<script>
+  $(document).ready(function()
+  {
+    var expenseAmount;
+    var totalExpense = 0;
+    $('td:nth-child(5)').each(function()
+    {
+      expenseAmount=$(this).html();
+      totalExpense+=parseInt(expenseAmount);
+      $('#totalExpense').text(totalExpense);
+    });
+  });
+</script>
+
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-regular fa-house"></i>Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><i class="fa-thin fa-cash-register"></i>Expenses</li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-cash-register"></i>Expenses</li>
   </ol>
 </nav>
 
@@ -18,27 +32,31 @@
     <table class="table table-stripped table-hover">
       <thead>
         <tr>
-          <th>Amount (CURRENCY)</th>
+          <th>Operations</th>
           <th>Category</th>
           <th>Description</th>
           <th>Date</th>
-          <th></th>
+          <th>Amount (CURRENCY)</th>
         </tr>
       </thead>
 
       <tbody>
         {% for expense in expenses %}
         <tr>
-          <td>{{expense.amount}}</td>
-          <td>{{expense.category}}</td>
-          <td>{{expense.description}}</td>
-          <td>{{expense.date}}</td>
           <td>
             <a href="{% url 'edit_expenses' expense.id %}" class="btn btn-warning btn-sm">Edit</a>
             <a href="{% url 'delete_expenses' expense.id %}" class="btn btn-danger btn-sm">Delete</a>
           </td>
+          <td>{{expense.category}}</td>
+          <td>{{expense.description}}</td>
+          <td>{{expense.date}}</td>
+          <td>{{expense.amount}}</td>
         </tr>
         {% endfor %}
+        <tr>
+          <td colspan="4"><b>Total Expenses: </b></td>
+          <td id="totalExpense" style="font-weight: bold;"></td>
+        </tr>
       </tbody>
     </table>
   {% else %}
