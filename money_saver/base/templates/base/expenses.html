@@ -4,13 +4,13 @@
 
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Expenses</li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-regular fa-house"></i>Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><i class="fa-thin fa-cash-register"></i>Expenses</li>
   </ol>
 </nav>
 
 <h1>Expenses</h1>
-</br>
+<hr></br>
 <a href="{% url 'add_expenses' %}" class="btn btn-info m-b-10 m-l-5">Add Expenses</a>
 
 <div class="container">

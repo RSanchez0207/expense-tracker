@@ -4,11 +4,11 @@
         
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active"><a href="{% url 'home' %}"><i class="fa-regular fa-house"></i>Home</a></li>
     </ol>
 </nav>
   
-<h1>Overview</h1>
+<h1>Overview</h1><hr></br>
 
 <div class="container">
   <h3>Expenses</h3>
@@ -40,8 +40,9 @@
       </tbody>
     </table>
   {% else %}
-  </br>
     <h6>No expenses added at the moment.</h6>
+  </br>
+</br>
   {% endif %}
 </div>
 
@@ -75,8 +76,8 @@
       </tbody>
     </table>
   {% else %}
-      </br>
       <h6>No Income added at the moment.</h6>
+    </br>
   {% endif %}
 </div>
 

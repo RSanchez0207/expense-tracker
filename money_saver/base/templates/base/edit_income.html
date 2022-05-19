@@ -4,8 +4,8 @@
 
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'expenses' %}">Income</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-regular fa-house"></i>Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'expenses' %}"><i class="fa-thin fa-sack-dollar"></i>Income</a></li>
       <li class="breadcrumb-item active" aria-current="page">Edit Income</li>
     </ol>
 </nav>
@@ -19,11 +19,11 @@
             <div class="form-group">
                 <label for="">Amount</label>
                 <input type="number" class="form-control form-control-sm" name="income_amount" value="{{values.amount}}">
-            </div>
+            </div></br>
             <div class="form-group">
                 <label for="">Description</label>
                 <input type="text" class="form-control form-control-sm" name="income_description" value="{{values.description}}">
-            </div>
+            </div></br>
             <div class="form-group">
                 <label for="">Category</label>
                 <select name="income_category" class="form-control">
@@ -32,11 +32,11 @@
                         <option name="category" value="{{category.name}}">{{category.name}}</option>
                     {% endfor %}
                 </select>
-            </div>
+            </div></br>
             <div class="form-group">
                 <label for="">Date of Income</label>
                 <input type="date" class="form-control form-control-sm" name="income_date">
-            </div>
+            </div></br>
 
             <input type="submit" name="Submit" class="btn btn-primary btn-primary-sm" value="Save">
         </form>
