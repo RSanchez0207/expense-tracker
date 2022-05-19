@@ -1,25 +1,112 @@
 {% extends 'base/main.html' %}
 
 {% block content %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{% static 'base/css/login_design.css' %}" rel="stylesheet">
+    </head>
+    <body >
+        <div class="main-wrapper4">
+            <form action="" method="POST">
+                {% csrf_token %}
+            <div class="cont">
+            
+                <div class="form sign-in">
+                
+                <h2 style="margin-top: 20px">Sign In</h2>
+                
+                <label>
+                    <span style="margin-left: -180px;">Username</span>
+                    <input type="input" name="user" id="user" style="text-align: left" required>
+                </label>
+                
+                
+                <label>
+                    <span style="margin-left: -180px;">Password</span>
+                    <input  class="checkboxpass" type="checkbox" onclick="myFunction()" >
+                    <input  type="password" name="pass" id="pass" style="margin-top:-15px ; text-align: left" required>
+                    
+                </label>
+                <div>
+                
+                    <label> 
+                        <span>Remember me</span>
+                        <input  class="checkboxloc" type="checkbox" name="remember" checked="checked" >
+                    </label>
+                </div>
+                
+                <input type="hidden" name="submitcheck2" value="sent" >
+                    <button type="submit" class="submit" name="signin" value="Login">SIGN IN</button>
+                
+                
+                <p class="forgot-pass">Forgot Password ?</p>
+                
+                
+                </div>
+            </form>
+                
+                
+                <form id="signupform" action="signup.php" method="POST">
+                <div class="sub-cont">
+                
+                <div class="img">
+        
+                </div>
 
-    <h1>Login</h1>
-    <br/>
-
-    <form action="" method=POST>
-        {% csrf_token %}
-
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-
-        <input type="submit"
-        value="Submit"
-        class="btn btn-secondary">
-    </form>
+                </div>
+                
+            </div>
+            
+            <script src="{% static 'base/js/login_scripts.js' %}"></script>
+            
+            <script>
+                function send1(){
+                    document.getElementById("email").value = null;
+                }
+            </script>
+            
+            
+        
+            <script>
+                function myFunction() {
+                var x = document.getElementById("pass");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+                
+                function myFunction2() {
+                var x = document.getElementById("pass2");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+                
+                function myFunction3() {
+                var x = document.getElementById("pass3");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+            </script>
+            
+                </form>
+          
+        
+            </div>
+    </body>
+    </html>
 
 {% endblock %}

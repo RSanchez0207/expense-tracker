@@ -1,5 +1,5 @@
 {% extends 'base/main.html' %}
-
+{% load static %}
 {% block content %}
 {% if form.errors %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -8,19 +8,90 @@
     </div>
 {% endif %}
 
-    <h1>Register</h1>
-    <br/>
-
-    <form action="{% url 'register_user' %}" method=POST>
-        {% csrf_token %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{% static 'base/css/login_design.css' %}" rel="stylesheet">
+    </head>
+    <body >
+        <div class="main-wrapper4">
+            <form action="" method="POST">
+                {% csrf_token %}
+            <div class="cont">
+            
+                <div class="form sign-in">
+                
+                <h2 style="margin-top: 20px">Sign Up</h2>
+                
+                {% csrf_token %}
 
         {{ form.as_p }}
+        <input type="hidden" name="submitcheck2" value="sent" >
+        <button type="submit" class="submit" name="signin" value="Login">SIGN IN</button>
+                </div>
+            </form>
+                
+                
+                <form id="signupform" action="signup.php" method="POST">
+                <div class="sub-cont">
+                
+                <div class="img">
+        
+                </div>
 
-    </br></br>
+                </div>
+                
+            </div>
+            
+            <script src="{% static 'base/js/login_scripts.js' %}"></script>
+            
+            <script>
+                function send1(){
+                    document.getElementById("email").value = null;
+                }
+            </script>
+            
+            
+        
+            <script>
+                function myFunction() {
+                var x = document.getElementById("pass");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+                
+                function myFunction2() {
+                var x = document.getElementById("pass2");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+                
+                function myFunction3() {
+                var x = document.getElementById("pass3");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                
+                }
+            </script>
+            
+                </form>
+          
+        
+            </div>
+    </body>
+    </html>
 
-        <input type="submit"
-        value="Submit"
-        class="btn btn-secondary">
-    </form>
 
 {% endblock %}
