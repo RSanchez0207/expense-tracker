@@ -1,0 +1,42 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Wallet</li>
+  </ol>
+</nav>
+
+<h1>Add Wallet</h1>
+
+
+<form action="" method=POST>
+    <div class="mb-3">
+      <label  class="form-label">Wallet Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="wallet_name">
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label">Wallet Currency<span class="text-danger">*</span></label>
+            <select class="form-control custom-select" name="wallet_currency">
+                <option>--Select your Wallet Currency --</option>
+                <option>PHP</option>
+                <option>USD</option>
+                <option>EUR</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label">Initial Amount<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="init_amount">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+
+{% endblock %}

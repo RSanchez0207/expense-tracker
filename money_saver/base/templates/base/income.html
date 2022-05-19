@@ -1,0 +1,50 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Income</li>
+    </ol>
+</nav>
+
+<h1>Income</h1>
+
+<a href="{% url 'add_income' %}" class="btn btn-info m-b-10 m-l-5">Add Income</a>
+
+<div class="container">
+      {% if incomes.count %}
+        <table class="table table-stripped table-hover">
+          <thead>
+            <tr>
+              <th>Amount (CURRENCY)</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for income in incomes %}
+            <tr>
+              <td>{{income.amount}}</td>
+              <td>{{income.category}}</td>
+              <td>{{income.description}}</td>
+              <td>{{income.date}}</td>
+              <td>
+                <a href="{% url 'edit_income' income.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'delete_income' income.id %}" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+          </br>
+          <h6>No Income added at the moment.</h6>
+      {% endif %}
+</div>
+
+{% endblock %}
